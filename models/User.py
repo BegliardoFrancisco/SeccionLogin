@@ -1,10 +1,6 @@
-from sqlalchemy 				import Boolean, Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import  declarative_base
-from connection					import engine
+from sqlalchemy 		import Boolean, Column, ForeignKey, Integer, String
 import asyncio 
-
-
-Base =	declarative_base()
+from providers	import connection
 
 class User(Base): 
 	__tablename__= "users"
@@ -20,7 +16,3 @@ async def main():
 		await conn.run_sync(Base.metadata.create_all)
 
 	await engine.dispose()
-
-
-if __name__ == '__main__':
-	asyncio.run(main())
