@@ -1,6 +1,9 @@
-from sqlalchemy 		import Boolean, Column, ForeignKey, Integer, String
-import asyncio 
-from providers	import connection
+import sys 
+sys.path.append("../providers")
+
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from connection import Base, engine
+
 
 class User(Base): 
 	__tablename__= "users"
@@ -16,3 +19,4 @@ async def main():
 		await conn.run_sync(Base.metadata.create_all)
 
 	await engine.dispose()
+
