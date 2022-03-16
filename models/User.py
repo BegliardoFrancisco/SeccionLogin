@@ -1,14 +1,15 @@
 import sys 
-sys.path.append("../providers")
+sys.path.append("..")
 
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from connection import Base, engine
+from providers.connection import Base, engine
 
 
 class User(Base): 
 	__tablename__= "users"
 	id 			= Column(Integer, primary_key=True, index=True)
-	email		= Column(String(255), index=True)
+	name		= Column(String(255), index=True)
+	username	= Column(String(255), index=True)
 	password	= Column(String(255))
 	
 
